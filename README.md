@@ -1,1 +1,1 @@
-# platys-kafka-platform
+# kafka-platform-platys
