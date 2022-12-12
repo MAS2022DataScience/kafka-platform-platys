@@ -1,0 +1,64 @@
+      # Default values for the generator
+      # this file can be used as a template for a custom configuration
+      # or to know about the different variables available for the generator
+      platys:
+          platform-name: 'kafka-platform'
+          platform-stack: 'trivadis/platys-modern-data-platform'
+          platform-stack-version: '1.15.0'
+          structure: 'flat'
+      # ========================================================================
+      # Global configuration, valid for all or a group of services
+      # ========================================================================
+      # Timezone, use a Linux string such as Europe/Zurich or America/New_York
+      use_timezone: ''
+      # the name of the repository to use for private images, which are not on docker hub (currently only Oracle images)
+      private_docker_repository_name: 'trivadis'
+      #
+      # ===== Apache Zookeeper ========
+      #
+      ZOOKEEPER_enable: true
+      #
+      # ===== Apache Kafka ========
+      #
+      KAFKA_enable: true
+      #
+      # ===== Kafka Connect ========
+      #
+      KAFKA_CONNECT_enable: true
+      #
+      # ===== Confluent ksqlDB ========
+      #
+      KAFKA_KSQLDB_enable: true
+      #
+      # ===== Schema Registry ========
+      #
+      SCHEMA_REGISTRY_enable: true
+      #
+      # ===== Schema Registry UI ========
+      #
+      SCHEMA_REGISTRY_UI_enable: true
+      #
+      # ===== Confluent Rest Proxy ========
+      #
+      KAFKA_RESTPROXY_enable: true
+      #
+      # ===== kcat (used to be kafkacat) ========
+      #
+      KCAT_enable: true
+      #
+      # ===== Apache Kafka HQ ========
+      #
+      KAFKA_AKHQ_enable: true
+      #
+      # =====  Streamsets Data Collector ========
+      #
+      STREAMSETS_enable: true
+      #
+      # ===== Grafana ========
+      #
+      GRAFANA_enable: true
+      #
+      # ===== NoSQL - Prometeus ========
+      #
+      PROMETHEUS_enable: true
+      

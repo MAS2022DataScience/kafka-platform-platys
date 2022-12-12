@@ -1,0 +1,23 @@
+-- Script File zur Vorbereitung der Kafka Objekte; Topics, Tables, Streams
+-- Ausführen des Scripts via kSQLDB-CLI
+-- docker exec -it ksqldb-cli ksql http://ksqldb-server-1:8088
+
+-- Script ausführen; Script muss in das Verzeichnis /data-transfer kopiert werden, damit es im Docker-Container in ksql verfügbar ist
+-- RUN SCRIPT '/data-transfer/initKafkaTopics.sql'
+
+
+-- Sollten beim ausführen des Scripts Fehler auftreten beim löschen der Tagellen und Topics (drop table) weil noch Queries am laufen sind, ist wie folgt vorzugehen
+-- Queries abfragen: SHOW QUERIES;
+-- Query beenden:    TERMINATE <query name>;
+
+-- ---------------------------------------------
+-- Development options
+set 'auto.offset.reset' = 'earliest';
+-- unset 'auto.offset.reset';
+-- ---------------------------------------------
+
+DROP STREAM IF EXISTS src_stream;
+CREATE STREAM src_stream
+WITH (KAFKA_TOPIC='general_01_player_ball',VALUE_FORMAT='AVRO',  PARTITIONS=3, REPLICAS=2);
+-- SELECT * FROM src_stream WHERE ID = 250011089;
+-- EMIT CHANGES;
