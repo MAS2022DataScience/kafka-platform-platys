@@ -1,0 +1,42 @@
+# docker-compose -f .\docker-compose.yml -f .\docker-compose-sp.yml up -d
+# docker-compose -f .\docker-compose.yml -f .\docker-compose-sp.yml ps
+# docker-compose -f .\docker-compose.yml -f .\docker-compose-sp.yml down
+
+version: '3.5'
+networks:
+  default:
+    name: kafka-platform
+services:
+  tracabgen5filter:
+    image: tracabgen5filter:latest
+    hostname: tracabgen5filter
+    container_name: tracabgen5filter
+    ports:
+      - 8180:8080
+    depends_on:
+        - kafka-1
+        - kafka-2
+        - kafka-3
+        - schema-registry-1
+  tracabgen5enricher:
+    image: tracabgen5enricher:latest
+    hostname: tracabgen5enricher
+    container_name: tracabgen5enricher
+    ports:
+      - 8181:8080
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry-1
+  tracabgen5spliter:
+    image: tracabgen5spliter:latest
+    hostname: tracabgen5spliter
+    container_name: tracabgen5spliter
+    ports:
+      - 8182:8080
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry-1
