@@ -40,3 +40,36 @@ services:
       - kafka-2
       - kafka-3
       - schema-registry-1
+  general-worker-acceleration:
+    image: general-worker-acceleration:latest
+    hostname: general-worker-acceleration
+    container_name: general-worker-acceleration
+    ports:
+      - 8183:8080
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry-1
+  general-worker-ball-zone-change:
+    image: general-worker-ball-zone-change:latest
+    hostname: general-worker-ball-zone-change
+    container_name: general-worker-ball-zone-change
+    ports:
+      - 8184:8080
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry-1
+  general-worker-ball-possession-change:
+    image: general-worker-ball-possession-change:latest
+    hostname: general-worker-ball-possession-change
+    container_name: general-worker-ball-possession-change
+    ports:
+      - 8185:8080
+    depends_on:
+      - kafka-1
+      - kafka-2
+      - kafka-3
+      - schema-registry-1
